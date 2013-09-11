@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html>
+
+<!--
+  15-237 Spring 2013 Unit Project - Thyme to Eat
+  Kenneth Li (kyli), Ivan Liang(hiliang), Rebecca Lui (rhlui)   
+-->
+    <head>
+		<title>Thyme to Eat!</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="client.js"></script>
+        <link href="reset.css" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Skranji:700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+        <link href="style.css" rel="stylesheet" type="text/css">				
+    </head>
+    <body>
+        <div id="container"> 
+            <div id="header">
+            <div class="buttonContainer">
+            <span id="backButton">
+                    <img class="button" src="images/back_arrow.png" alt="Back"> 
+                    <div> Back </div>
+            </span>
+            <div id="logo"> <img id="logoImage" alt="Thyme to Eat!" src="images/logo.png"> Thyme to Eat! </div>
+            </div>  
+               
+
+                <div id="headerButtonBar" class="buttonContainer"> 
+                    <span id="listButton"><img class="button" src="images/grocery_icon.png" alt="Grocery List"><!-- goes to grocery list -->
+                        <div>Grocery List</div>
+                     </span>
+                     <span id="plannerButton"><img  class="button" src="images/mealplan_icon.png" alt="Meal Planner"> <!-- goes to meal planner -->
+                        <div>Meal Planner</div>
+                     </span>
+                     <span  id="favButton"><img class="button" src="images/favorites_icon.png" alt="Favorites"> <!-- goes to favorites -->
+                        <div>Favorites</div>
+                     </span>
+                     <span  id="bookmarksButton"><img class="button" src="images/bookmarks_icon.png" alt="Bookmarks"> <!-- goes to bookmarked items -->
+                        <div>Bookmarks</div>
+                     </span>
+                    <span id="logoutButton"><img  class="button" src="images/user_icon.png" alt="Logout"><!-- Shows logout popup -->
+                        <div>Log Out</div>
+                    </span>                    
+                    <span id="loginButton" ><img class="button" src="images/user_icon.png" alt="Login"><!-- Shows login popup -->
+                        <div>Log In</div>
+                    </span>
+                    
+                </div>
+            </div>
+        <div id="mainContent">
+            <div id="homePage">
+                <div id="searchContainer">
+                    
+                    
+                    <form id="search">
+                        <input id="searchText" type="text" placeholder="Example: Chicken">
+                        <input id="searchButton" type="submit" value="Search">
+                    </form>
+                    <div id="searchIngredients">
+                        <p>Add ingredients to search: <img class="hintIcon" alt="?" title="Add ingredients below to
+							narrow down your search. If no exact combination can be found,	the closest results
+							with some ingredients will be shown." src="images/hint_icon_white.png"></p>
+                        <form id="ingredientSearch">
+                            <input id="ingredientSearchText" type="text" placeholder="Example: Pepper">
+                            <input id="ingredientSearchAdd" type="submit" value="Add">
+                        </form>
+                        <ul id="searchIngredientList"></ul>
+                    </div>
+                </div>
+            </div>
+                     
+            <div id="groceryList">
+                 <h1>My Groceries</h1>
+                
+                <form id="addIngredient">
+                    <input type="text" id="newGrocery" placeholder="Add an ingredient">
+                    <input type="submit" value="Add">
+                </form>
+				<span>You can add ingredients for specific recipes from your Meal Planner too!</span>
+                <div id="listContainer">
+                <ul id="groceries"></ul>
+                </div>
+            </div>
+            <div id="results">
+                <!-- displays search results of results separate -->
+             <div id="resultsHeader">
+                 <div class="pageBtn">
+                    <img src="images/prev_button.png" alt="previous" class="previousBtn">
+                 </div>
+                 <div class="pageBtn">
+                    <img src="images/next_button.png" alt="next" class="nextBtn">
+                 </div>
+                 <h2></h2>
+                 <h4></h4> 
+                 <h3></h3>
+              </div>
+              <ul id="recipeResults"></ul>
+              <div id="resultsFooter">
+                <div class="pageBtn">
+                    <img src="images/prev_button.png" alt="previous" class="previousBtn">
+                </div>
+                <div class="pageBtn">
+                    <img src="images/next_button.png" alt="next" class="nextBtn">
+                </div>
+              </div>
+            </div>
+            <div id="mealPlanner">
+                <!-- recipe planner -->
+				<h1>Your meals for this week <img class="hintIcon" alt="?" title="You can drag-and-drop recipes to different days of the week. Click on the [X] mark to delete a recipe, or the 'Add Ingredients' button to add the recipe's ingredients to your grocery list." src="images/hint_icon_white.png"></h1>
+
+                <div>
+                    <h3>Sunday</h3>
+
+                    <ul class="mealDay" id="sunMeals"></ul>
+                </div>
+                <div>
+                    <h3>Monday</h3>
+
+                    <ul class="mealDay" id="monMeals"></ul>
+                </div>
+                <div>
+                    <h3>Tuesday</h3>
+
+                    <ul class="mealDay" id="tueMeals"></ul>
+                </div>
+                <div>
+                    <h3>Wednesday</h3>
+
+                    <ul class="mealDay" id="wedMeals"></ul>
+                </div>
+                <div>
+                    <h3>Thursday</h3>
+
+                    <ul class="mealDay" id="thurMeals"></ul>
+                </div>
+                <div>
+                    <h3>Friday</h3>
+
+                    <ul class="mealDay" id="friMeals"></ul>
+                </div>
+                <div>
+                    <h3>Saturday</h3>
+
+                    <ul class="mealDay" id="satMeals"></ul>
+                </div>
+            </div>
+            <div id="recipe" class="recipe">
+                <!-- display selected recipe here -->
+                 <h1>Recipe Title</h1>
+                
+                <div class="upperRecipeSection">
+                     
+                    <div class="recipeImage"></div>
+                    <div class="recipeRight">
+                    <div id="recipeButtonBar" class="buttonContainer"> 
+                            <span><img class="addFavButton button" src ="images/add_favorite.png" alt="Add to Favorites"><div id="favorite"></div></span>
+                            <span><img class="addBookmarkButton button" src="images/add_bookmark.png" alt="Add Bookmark"><div id="bookmark"></div></span>
+                            <span><img class="addMealButton button" src= "images/add_mealplan.png" alt="Add to Meal Plan"><div id="planMeal">Plan Meal</div></span>
+                            </div>
+                            
+                        <div class="recipeInfo">
+                            <!-- misc info -->
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="lowerRecipeSection">
+                <div id="recipeSourceInfo">
+                            <h2> Preparation Directions </h2>
+                            <p>Recipe from: <span class="recipeSource"></span>
+                            </p>
+                            <p>Click <a class="preparationLink">here</a> for preparation directions.</p>
+                        </div>
+                    <div class="ingredientsSection">
+                        <ul class="ingredients"></ul>
+                    </div>
+                    <div class="nutritionSection">
+                         <h2>Nutritional Estimates</h2>
+    
+                        <p>* This chart represents Percent Daily Values, based on a 2,000 calorie
+                            diet.</p>
+                        <div id="nutritionContainer">
+                            <div id="nutritionLabels"></div>
+                            <div id="graphContainer">
+                                <canvas id="nutritionGraph"></canvas>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+            <div id="favorites">
+                <!-- displays favorites -->
+                 <h1>Favorites</h1>
+
+                <ul id="recipeFavorites"></ul>
+               
+            </div>
+            <div id="bookmarks">
+                <h1>Bookmarks</h1>
+
+                <ul id="bookmarksList"></ul>
+            </div>
+            <div id="register">
+                <form id="registerForm">
+                    <label for="formUserID">User ID <img class="hintIcon" title="At least 5 characters" alt="Hint" src="images/hint_icon.png"></label>
+                    <input type="text" id="formUserID">
+                    <br/>
+                    <label for="formRealName">Real Name <img class="hintIcon" title="Required" alt="Hint" src="images/hint_icon.png"></label>
+                    <input type="text" id="formRealName">
+                    <br/>
+                    <label for="formPass">Password <img class="hintIcon" title="At least 6 characters" alt="Hint" src="images/hint_icon.png"></label>
+                    <input type="password" id="formPass">
+                    <br/>
+                    <label for="formPass2">Confirm Password <img class="hintIcon" title="Must match your password" alt="Hint" src="images/hint_icon.png"></label>
+                    <input type="password" id="formPass2">
+                    <input type="submit" value="Register">
+                </form>
+                <br/>
+                <div id="registerError"></div>
+            </div>
+        </div>
+        <!-- holds app elements that are visible and active, and when they are
+        done being used, return to #hidden-->
+        <div id="popupContent"></div>
+        <!-- holds app elements that aren't visible, but still exist in
+        state-->
+        <div id="hidden">
+            <li class="resultItem">
+                <div class="resultThumbnailContainer"></div>
+                <div class="resultDescContainer">
+                     <h3></h3>
+
+                </div>
+            </li>
+            <li class="favItem">
+                <div class="favThumbnailContainer"></div>
+                <div class="favDescContainer">
+                     <h3></h3>
+
+                </div>
+            </li>
+            <div id="iframeFloater">
+                <div id="darkbg"></div>
+                <div id="lightbox">
+                    <div id="lightboxHeader">You are visiting an external site. Click outside this frame to return to <strong>Time to Eat!</strong></div>
+                    <iframe id="remotepage"></iframe>
+                </div>
+            </div>
+            <div id="ingredientsPopUp">
+                
+                <div id="closeIngrPopup" >Close</div>
+				<form id="selectIngrForm">
+					<div id="selectAllContainer">
+						<input type="checkbox" id="selectAllIngr"><span>Select All</span>
+					</div>
+					
+					<ul id="selectIngList">
+						
+					</ul>
+					<input id="addGroceries" type="submit" value="Add Selected to Grocery List">
+				</form>
+            </div>
+            <div id="sideBar" class="sideBarReduced">
+                <img id="expandSideBtn" alt="Expand Search Tab" src="images/expand_tab.png">
+                <div id="sideSearch"></div>
+            </div>
+            <div id="mealplanMini">
+                <div class="mealDayMini" id="sunDrop">Sunday</div>
+                <div class="mealDayMini" id="monDrop">Monday</div>
+                <div class="mealDayMini" id="tueDrop">Tuesday</div>
+                <div class="mealDayMini" id="wedDrop">Wednesday</div>
+                <div class="mealDayMini" id="thurDrop">Thursday</div>
+                <div class="mealDayMini" id="friDrop">Friday</div>
+                <div class="mealDayMini" id="satDrop">Saturday</div>
+            </div>
+            <div id="login">
+				<form id="loginForm"><label for="loginUserID">Username</label>
+                    <br/>
+                    <input type="text" name="loginUserID" id="loginUserID">
+					<br/>
+					<label for="loginPass">Password</label>
+                    <br/>
+                    <input type="password" name="loginPass" id="loginPass">
+                    <br/>
+                    <input type="submit" id="loginSubmit" value="Login">
+                    <input type="button" id="registerButton" value="Register">
+                </form>
+
+            </div>
+        </div>
+        <div id="footer">&copy;Copyright 2013<br>237 Industries</div>
+        </div>
+    </body>
+</html> 
