@@ -241,4 +241,4 @@ function initServer() {
 
 // Initialize the server, bind listen port 8889 
 initServer();
-app.listen(8889);
+app.listen(Number(process.env.PORT || 8889));
