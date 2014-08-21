@@ -444,6 +444,8 @@ function populateSearchResult(result) {
     }
     var thumbnailContainer = li.children(".resultThumbnailContainer");
     thumbnailContainer.css("background-image", "url('" + thumbURL + "')");
+    thumbnailContainer.css("background-repeat", "no-repeat");
+    thumbnailContainer.css("background-size", "cover");
     thumbnailContainer.click(clickRecipe);
     var bookmarker = $("<div>").addClass("bookmarkIndicator");
     if (global.user.bookmarks[result.id] !== undefined) {  // If it's bookmarked, show icon

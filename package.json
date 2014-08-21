@@ -1,0 +1,12 @@
+{
+  "name": "thymetoeat",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kloong87li/ThymeToEat.git"
+  },
+  "description": "App for exploring recipes.",
+  "dependencies": {
+    "express": "3.0.3"
+  }
+}
